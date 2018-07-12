@@ -4,18 +4,31 @@ package com.johlcar.essential531.data;
  * Workout cycle history list items
  */
 
-// TODO: Refactor into 531 cycle model
-
 public class ListItem {
 
+    private int cycleId;
     private String dateAndTime;
-    private String message;
-    private int colorResource;
+    private int squatMax;
+    private int benchMax;
+    private int pressMax;
+    private int deadLiftMax;
 
-    public ListItem(String dateAndTime, String message, int colorResource) {
+    public ListItem(int cycleId, String dateAndTime, int squatMax, int benchMax, int pressMax,
+                    int deadLiftMax) {
+        this.cycleId = cycleId;
         this.dateAndTime = dateAndTime;
-        this.message = message;
-        this.colorResource = colorResource;
+        this.squatMax = squatMax;
+        this.benchMax = benchMax;
+        this.pressMax = pressMax;
+        this.deadLiftMax = deadLiftMax;
+    }
+
+    public int getCycleId() {
+        return cycleId;
+    }
+
+    public void setCycleId(int cycleId) {
+        this.cycleId = cycleId;
     }
 
     public String getDateAndTime() {
@@ -26,19 +39,36 @@ public class ListItem {
         this.dateAndTime = dateAndTime;
     }
 
-    public String getMessage() {
-        return message;
+    public int getSquatMax() {
+        return squatMax;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setSquatMax(int squatMax) {
+        this.squatMax = squatMax;
     }
 
-    public int getColorResource() {
-        return colorResource;
+    public int getBenchMax() {
+        return benchMax;
     }
 
-    public void setColorResource(int colorResource) {
-        this.colorResource = colorResource;
+    public void setBenchMax(int benchMax) {
+        this.benchMax = benchMax;
     }
+
+    public int getPressMax() {
+        return pressMax;
+    }
+
+    public void setPressMax(int pressMax) {
+        this.pressMax = pressMax;
+    }
+
+    public int getDeadLiftMax() {
+        return deadLiftMax;
+    }
+
+    public void setDeadLiftMax(int deadLiftMax) {
+        this.deadLiftMax = deadLiftMax;
+    }
+
 }

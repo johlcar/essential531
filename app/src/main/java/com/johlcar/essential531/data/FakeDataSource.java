@@ -15,6 +15,13 @@ public class FakeDataSource implements DataSourceInterface {
 
     private static final int sizeOfCollection = 12;
 
+    private final int[] cycleIDs = {
+            1,
+            2,
+            3,
+            4
+    };
+
     private final String[] datesAndTimes = {
             "6:30AM 06/01/2017",
             "9:26PM 04/22/2013",
@@ -22,22 +29,36 @@ public class FakeDataSource implements DataSourceInterface {
             "2:43AM 09/7/2018",
     };
 
-    private final String[] messages = {
-            "Check out content like Fragmented Podcast to expose yourself to the knowledge, ideas, " +
-                    "and opinions of experts in your field",
-            "Look at Open Source Projects like Android Architecture Blueprints to see how experts" +
-                    " design and build Apps",
-            "Write lots of Code and Example Apps. Writing good Quality Code in an efficient manner "
-                    + "is a Skill to be practiced like any other.",
-            "If at first something doesn't make any sense, find another explanation. We all " +
-                    "learn/teach different from each other. Find an explanation that speaks to you."
+    private final int[] squatMaxes = {
+            300,
+            400,
+            200,
+            600
+
     };
 
-    private final int[] colours = {
-            R.color.RED,
-            R.color.BLUE,
-            R.color.GREEN,
-            R.color.YELLOW
+    private final int[] benchMaxes = {
+            200,
+            250,
+            300,
+            315
+
+    };
+
+    private final int[] pressMaxes = {
+            115,
+            200,
+            185,
+            250
+
+    };
+
+    private final int[] deadLiftMaxes = {
+            200,
+            300,
+            400,
+            800
+
     };
 
     public FakeDataSource(){
@@ -53,13 +74,14 @@ public class FakeDataSource implements DataSourceInterface {
         for (int i = 0; i < 12; i++){
 
             int randOne = random.nextInt(4);
-            int randTwo = random.nextInt(4);
-            int randThree = random.nextInt(4);
 
             ListItem listItem = new ListItem(
+                    cycleIDs[randOne],
                     datesAndTimes[randOne],
-                    messages[randOne],
-                    colours[randOne]
+                    squatMaxes[randOne],
+                    benchMaxes[randOne],
+                    pressMaxes[randOne],
+                    deadLiftMaxes[randOne]
             );
 
             listOfData.add(listItem);

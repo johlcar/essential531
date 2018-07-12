@@ -1,43 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/history_cycle_detail_layout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.HistoryCycleDetailActivity">
 
-    <View
-        android:id="@+id/cont_colored_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/div_center"
-        />
 
-    <TextView
-        style="@style/Text.Primary"
-        android:id="@+id/lbl_date_and_time_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/div_center"
-        android:padding="16dp"
-        tools:text="Test date text here"
-         />
+        <TableLayout
+            android:id="@+id/table_squat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:stretchColumns="*"
+            >
+        </TableLayout>
 
-    <View
-        android:id="@+id/div_center"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_centerVertical="true"
-        />
+        <TableLayout
+            android:id="@+id/table_bench_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:stretchColumns="*"
+            >
+        </TableLayout>
 
-    <TextView
-        style="@style/Text.Secondary"
-        android:id="@+id/lbl_message_body"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/div_center"
-        android:padding="16dp"
-        tools:text="Test message here to describe the content"
-        />
+        <TableLayout
+            android:id="@+id/table_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:stretchColumns="*"
+            >
+        </TableLayout>
 
-</RelativeLayout>
+        <TableLayout
+            android:id="@+id/table_dead_lift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:stretchColumns="*"
+            >
+        </TableLayout>
+
+</LinearLayout>

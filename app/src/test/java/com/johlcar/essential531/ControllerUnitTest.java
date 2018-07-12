@@ -15,8 +15,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
-
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -37,11 +35,12 @@ public class ControllerUnitTest {
     Controller controller;
 
     private static final ListItem testItem = new ListItem(
+            1,
             "6:30AM 06/01/2017",
-            "Check out content like Fragmented Podcast to expose yourself to the knowledge, ideas, " +
-                    "and opinions of experts in your field",
-            R.color.RED
-
+            300,
+            200,
+            115,
+            200
     );
 
     @Before
@@ -73,8 +72,12 @@ public class ControllerUnitTest {
         controller.onListItemClick(testItem);
 
         Mockito.verify(view).startDetailActivity(
+                testItem.getCycleId(),
                 testItem.getDateAndTime(),
-                testItem.getMessage(),
-                testItem.getColorResource());
+                testItem.getSquatMax(),
+                testItem.getBenchMax(),
+                testItem.getPressMax(),
+                testItem.getDeadLiftMax()
+        );
     }
 }

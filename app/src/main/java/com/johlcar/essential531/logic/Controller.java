@@ -1,7 +1,5 @@
 package com.johlcar.essential531.logic;
 
-import android.view.View;
-
 import com.johlcar.essential531.data.DataSourceInterface;
 import com.johlcar.essential531.data.ListItem;
 import com.johlcar.essential531.view.ViewInterface;
@@ -26,9 +24,12 @@ public class Controller {
 
    public void onListItemClick(ListItem testItem) {
       view.startDetailActivity(
+              testItem.getCycleId(),
               testItem.getDateAndTime(),
-              testItem.getMessage(),
-              testItem.getColorResource()
+              testItem.getSquatMax(),
+              testItem.getBenchMax(),
+              testItem.getPressMax(),
+              testItem.getDeadLiftMax()
       );
    }
 }

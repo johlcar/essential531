@@ -1,8 +1,6 @@
 package com.johlcar.essential531.view;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,9 +21,12 @@ import java.util.List;
 
 public class HistoryCycleListActivity extends AppCompatActivity implements ViewInterface {
 
+    private static final String EXTRA_CYCLE_ID = "EXTRA_CYCLE_ID";
     private static final String EXTRA_DATE_AND_TIME = "EXTRA_DATE_AND_TIME";
-    private static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
-    private static final String EXTRA_COLOUR = "EXTRA_COLOUR";
+    private static final String EXTRA_SQUAT_MAX = "EXTRA_SQUAT_MAX";
+    private static final String EXTRA_BENCH_MAX = "EXTRA_BENCH_MAX";
+    private static final String EXTRA_PRESS_MAX = "EXTRA_PRESS_MAX";
+    private static final String EXTRA_DEAD_LIFT_MAX = "EXTRA_DEAD_LIFT_MAX ";
 
     private List<ListItem> listOfData;
 
@@ -48,11 +49,15 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
     }
 
     @Override
-    public void startDetailActivity(String dateAndTime, String message, int colorResource) {
+    public void startDetailActivity(int cycleId, String dateAndTime, int squatMax, int benchMax,
+                                    int pressMax, int deadLiftMax) {
         Intent i = new Intent(this, HistoryCycleDetailActivity.class);
+        i.putExtra(EXTRA_CYCLE_ID, cycleId);
         i.putExtra(EXTRA_DATE_AND_TIME, dateAndTime);
-        i.putExtra(EXTRA_MESSAGE, message);
-        i.putExtra(EXTRA_COLOUR, colorResource);
+        i.putExtra(EXTRA_SQUAT_MAX, squatMax);
+        i.putExtra(EXTRA_BENCH_MAX, benchMax);
+        i.putExtra(EXTRA_PRESS_MAX, pressMax);
+        i.putExtra(EXTRA_DEAD_LIFT_MAX, deadLiftMax);
 
         startActivity(i);
     }
@@ -97,12 +102,10 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
         public void onBindViewHolder(CustomViewHolder holder, int position) {
             ListItem currentItem = listOfData.get(position);
 
-            holder.coloredCircle.setBackgroundResource(
-                    currentItem.getColorResource()
-            );
+            String cycleNumber = "Cycle " + String.valueOf(currentItem.getCycleId());
 
             holder.message.setText(
-                    currentItem.getMessage()
+                   cycleNumber
             );
 
             holder.dateAndTime.setText(
@@ -118,7 +121,6 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
 
         class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-            private View coloredCircle;
             private TextView dateAndTime;
             private TextView message;
             private ViewGroup container;
@@ -126,7 +128,6 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
             public CustomViewHolder(View itemView) {
                 super(itemView);
 
-                this.coloredCircle = itemView.findViewById(R.id.imv_list_workout_circle);
                 this.dateAndTime = (TextView) itemView.findViewById(R.id.lbl_date_and_time);
                 this.message = (TextView) itemView.findViewById(R.id.lbl_message);
                 this.container = (ViewGroup) itemView.findViewById(R.id.root_list_item);

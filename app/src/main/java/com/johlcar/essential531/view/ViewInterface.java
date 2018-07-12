@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface ViewInterface {
 
-    void startDetailActivity(String dateAndTime, String message, int colorResource);
+    void startDetailActivity(int cycleId, String dateAndTime, int squatMax, int benchMax, int pressMax,
+                             int deadLiftMax);
     void setUpAdapterAndView(List<ListItem> listOfData);
 
 }
