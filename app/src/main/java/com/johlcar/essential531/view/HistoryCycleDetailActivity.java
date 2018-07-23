@@ -74,8 +74,7 @@ public class HistoryCycleDetailActivity extends AppCompatActivity {
         double[][] tableValues = {{.65, .70, .75, .40}, {.75, .80, .85, .50}, {.85, .90, .95, .60}};
         String[][] tableValuesToStrings = new String[tableValues.length][];
 
-        // Calculate set weights from training maxes
-        // Store in String container
+        // Calculate real weight values from maxes
         for (int i = 0; i < tableValues.length; i++) {
 
             tableValuesToStrings[i] = new String[tableValues[i].length];
@@ -86,8 +85,7 @@ public class HistoryCycleDetailActivity extends AppCompatActivity {
             }
         }
 
-        // Generate table rows and text views of our table layout
-        // Display weight value in each text view
+        // Generate table rows and text views of table layout
         for (int i = 0; i < tableValuesToStrings.length; i++) {
 
             TableRow tableRow = new TableRow(this);
