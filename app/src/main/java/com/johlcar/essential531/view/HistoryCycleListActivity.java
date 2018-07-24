@@ -2,6 +2,8 @@ package com.johlcar.essential531.view;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +13,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +27,9 @@ import com.johlcar.essential531.data.ListItem;
 import com.johlcar.essential531.logic.Controller;
 
 import java.util.List;
+
+// TODO: Refactor Navigation Drawer toolbar,
+// https://developer.android.com/training/implementing-navigation/nav-drawer#java
 
 public class HistoryCycleListActivity extends AppCompatActivity implements ViewInterface {
 
@@ -42,11 +48,9 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
 
     private Controller controller;
 
-    private ListView mDrawerList;
-    private ArrayAdapter<String> mAdapter;
-    private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private String mActivityTitle;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private NavigationView mNavigation;
 
 
 
@@ -55,21 +59,17 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_cycle_list);
 
-        mDrawerList = (ListView) findViewById(R.id.navList);
-
         recyclerView = (RecyclerView) findViewById(R.id.rec_list_activity);
         layoutInflater = getLayoutInflater();
 
         // Dependency Injection
         controller = new Controller(this, new FakeDataSource());
 
-        addDrawerItems();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mActivityTitle = getTitle().toString();
 
         setupDrawer();
     }
@@ -175,40 +175,45 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
         }
     }
 
-    private void addDrawerItems(){
-        String[] viewArray = {"Past Workouts", "Settings"};
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, viewArray);
-        mDrawerList.setAdapter(mAdapter);
-    }
-
     private void setupDrawer() {
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                R.string.drawer_open, R.string.drawer_close){
-            public void onDrawerOpened(View drawerView){
-                super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Navigation!");
-                invalidateOptionsMenu();
-            }
+                R.string.drawer_open, R.string.drawer_close);
 
-            public void onDrawerClosed(View view){
-                super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mActivityTitle);
-                invalidateOptionsMenu();
-            }
-        };
-
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+        mNavigation = (NavigationView) findViewById(R.id.nav_view);
+        mNavigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+                menuItem.setChecked(true);
+
+                mDrawerLayout.closeDrawers();
+
+                int id = menuItem.getItemId();
+
+                switch (id){
+                    case R.id.nav_settings:
+                        Intent i = new Intent(HistoryCycleListActivity.this, SettingsActivity.class);
+                        startActivity(i);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 
-        int id = item.getItemId();
-
-        if(mDrawerToggle.onOptionsItemSelected(item)){
+        if(mDrawerToggle.onOptionsItemSelected(item))
             return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -224,6 +229,12 @@ public class HistoryCycleListActivity extends AppCompatActivity implements ViewI
     public void onConfigurationChanged(Configuration newConfig){
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.drawer_view, menu);
+        return true;
     }
 
 }
