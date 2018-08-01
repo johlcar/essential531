@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,18 +9,29 @@
         <item name="android:windowBackground">@color/colorWindowBackground</item>
     </style>
 
-    <style name="Text">
-        <item name="android:gravity">center_vertical</item>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Text.Primary">
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">16sp</item>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="cycle_title">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">26dp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">8dp</item>
     </style>
 
-    <style name="Text.Secondary">
-        <item name="android:fontFamily">sans-serif</item>
+    <style name="cycle_date_completed">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">20dp</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
     </style>
 
 </resources>
