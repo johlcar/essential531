@@ -1,12 +1,18 @@
 package com.johlcar.essential531;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,71 +25,73 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean TRAINING_CYCLES_SHOWN = true;
     private Fragment shownFragment;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setToolbar(getString(R.string.app_name));
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+
         initView();
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             showFragment(PastTrainingCyclesListFragment.newInstance());
         }
     }
 
-    public void setToolbar(@NonNull String title){
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(title);
-        setSupportActionBar(toolbar);
-    }
-
     private void initView() {
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_past_training_cycles:
-                        TRAINING_CYCLES_SHOWN = true;
-                        showFragment(PastTrainingCyclesListFragment.newInstance());
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        drawerLayout.closeDrawers();
+
+                        // Add code here to update the UI based on the item selected
+                        // For example, swap UI fragments here
+                        switch (menuItem.getItemId()) {
+                            case R.id.nav_workout_history:
+                                TRAINING_CYCLES_SHOWN = true;
+                                showFragment(PastTrainingCyclesListFragment.newInstance());
+                                return true;
+                            case R.id.nav_settings:
+                                TRAINING_CYCLES_SHOWN = false;
+                                showFragment(SettingsFragment.newInstance());
+                                return true;
+                        }
+
                         return true;
-                    case R.id.navigation_settings:
-                        TRAINING_CYCLES_SHOWN = false;
-                        showFragment(SettingsFragment.newInstance());
-                        return true;
-                }
-                return false;
-            }
-        });
+                    }
+                });
+
     }
 
-    private void showFragment(final Fragment fragment){
+    private void showFragment(final Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentHolder, fragment);
+        fragmentTransaction.replace(R.id.content_frame, fragment);
         fragmentTransaction.commitNow();
         shownFragment = fragment;
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.overflow, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        final int id = item.getItemId();
-
-        if (id == R.id.action_delete_list_data) {
-            deleteCurrentListData();
-            return true;
-        } else if (id == R.id.action_re_create_database) {
-            reCreateDatabase();
-            return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

@@ -67,7 +67,7 @@ public class PastTrainingCyclesListAdapter extends RecyclerView.Adapter<PastTrai
 
                     activity.getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragmentHolder, pastTrainingCyclesDetailFragment)
+                            .replace(R.id.content_frame, pastTrainingCyclesDetailFragment)
                             .addToBackStack(null)
                             .commit();
                 }
