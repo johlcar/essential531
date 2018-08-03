@@ -1,9 +1,6 @@
 package com.johlcar.essential531;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -12,14 +9,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.johlcar.essential531.db.TrainingCyclesDatabase;
-import com.johlcar.essential531.view.PastTrainingCyclesListFragment;
-import com.johlcar.essential531.view.SettingsFragment;
+import com.johlcar.essential531.ui.CurrentTrainingCycleMenuFragment;
+import com.johlcar.essential531.ui.PastTrainingCyclesListFragment;
+import com.johlcar.essential531.ui.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,9 +57,13 @@ public class MainActivity extends AppCompatActivity {
                         // Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
                         switch (menuItem.getItemId()) {
-                            case R.id.nav_workout_history:
+                            case R.id.nav_past_training_cycle:
                                 TRAINING_CYCLES_SHOWN = true;
                                 showFragment(PastTrainingCyclesListFragment.newInstance());
+                                return true;
+                            case R.id.nav_current_training_cycle:
+                                TRAINING_CYCLES_SHOWN = false;
+                                showFragment(CurrentTrainingCycleMenuFragment.newInstance());
                                 return true;
                             case R.id.nav_settings:
                                 TRAINING_CYCLES_SHOWN = false;

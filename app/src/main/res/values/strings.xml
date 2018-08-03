@@ -3,15 +3,14 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="settings">Settings</string>
-    <string name="workout_history">Past Workout Cycles</string>
+    <string name="past_training_cycle">Past Training Cycles</string>
+    <string name="current_training_cycle">Current Training Cycle</string>
     <string name="title_past_training_cycles">Past Workouts</string>
     <string name="menu_item_delete_list_data">Delete list data</string>
     <string name="menu_item_re_create_database">Re-create database</string>
-    <string name="movie_title">Title</string>
-    <string name="movie_director">Director</string>
-    <string name="director_full_name">Full Name</string>
-    <string name="dialog_movie_title">Movie</string>
-    <string name="dialog_director_title">Director</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="enter">Enter</string>
+    <string name="ok">Ok</string>
+    <string name="margin_large">80dp</string>
 </resources>

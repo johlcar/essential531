@@ -1,12 +1,8 @@
-package com.johlcar.essential531.view;
+package com.johlcar.essential531.ui;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.graphics.Movie;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,10 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.johlcar.essential531.MainActivity;
 import com.johlcar.essential531.R;
 import com.johlcar.essential531.db.TrainingCycle;
-import com.johlcar.essential531.viewmodel.PastTrainingCyclesViewModel;
 
 import java.util.List;
 

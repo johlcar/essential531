@@ -2,8 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_workout_history"
-            android:title="@string/workout_history" />
+            android:id="@+id/nav_past_training_cycle"
+            android:title="@string/past_training_cycle" />
+        <item
+            android:id="@+id/nav_current_training_cycle"
+            android:title="@string/current_training_cycle"/>
         <item
             android:id="@+id/nav_settings"
             android:title="@string/settings" />

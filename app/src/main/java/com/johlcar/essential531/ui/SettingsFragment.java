@@ -1,4 +1,4 @@
-package com.johlcar.essential531.view;
+package com.johlcar.essential531.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

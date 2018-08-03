@@ -1,4 +1,4 @@
-package com.johlcar.essential531.view;
+package com.johlcar.essential531.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
