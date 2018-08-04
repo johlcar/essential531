@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 import com.johlcar.essential531.R;
 import com.johlcar.essential531.db.TrainingCycle;
-import com.johlcar.essential531.viewmodel.PastTrainingCyclesViewModel;
+import com.johlcar.essential531.viewmodel.TrainingCyclesViewModel;
 
 public class PastTrainingCyclesDetailFragment extends Fragment {
-    private PastTrainingCyclesViewModel pastTrainingCyclesViewModel;
+    private TrainingCyclesViewModel trainingCyclesViewModel;
     private Context context;
     private TrainingCycle pastTrainingCycleDetailItem;
 
@@ -36,8 +36,8 @@ public class PastTrainingCyclesDetailFragment extends Fragment {
         Bundle bundle = getArguments();
         int cid = bundle.getInt("item_selected_key");
 
-        pastTrainingCyclesViewModel = ViewModelProviders.of(this).get(PastTrainingCyclesViewModel.class);
-        pastTrainingCycleDetailItem = pastTrainingCyclesViewModel.getTrainingCycleById(cid);
+        trainingCyclesViewModel = ViewModelProviders.of(this).get(TrainingCyclesViewModel.class);
+        pastTrainingCycleDetailItem = trainingCyclesViewModel.getTrainingCycleById(cid);
         Log.i(TAG, "Cycle id: " + String.valueOf(pastTrainingCycleDetailItem.dateCompleted));
     }
 

@@ -13,4 +13,8 @@
     <string name="enter">Enter</string>
     <string name="ok">Ok</string>
     <string name="margin_large">80dp</string>
+    <string name="set_one">Set 1</string>
+    <string name="set_two">Set 2</string>
+    <string name="set_three">Set 3</string>
+    <string name="warm_up_reps">5</string>
 </resources>

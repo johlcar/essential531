@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         initView();
 
         if (savedInstanceState == null) {
-            showFragment(PastTrainingCyclesListFragment.newInstance());
+            showFragment(CurrentTrainingCycleMenuFragment.newInstance());
         }
     }
 

@@ -20,7 +20,7 @@ public abstract class TrainingCyclesDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             TrainingCyclesDatabase.class, DB_NAME)
-                            .allowMainThreadQueries() // SHOULD NOT BE USED IN PRODUCTION !!!
+                            .allowMainThreadQueries() // TODO: SHOULD NOT BE USED IN PRODUCTION !!!
                             .addCallback(new RoomDatabase.Callback() {
                                 @Override
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {

@@ -15,13 +15,13 @@ import android.view.ViewGroup;
 
 import com.johlcar.essential531.R;
 import com.johlcar.essential531.db.TrainingCycle;
-import com.johlcar.essential531.viewmodel.PastTrainingCyclesViewModel;
+import com.johlcar.essential531.viewmodel.TrainingCyclesViewModel;
 
 import java.util.List;
 
 public class PastTrainingCyclesListFragment extends Fragment {
     private PastTrainingCyclesListAdapter pastTrainingCyclesListAdapter;
-    private PastTrainingCyclesViewModel pastTrainingCyclesViewModel;
+    private TrainingCyclesViewModel trainingCyclesViewModel;
     private Context context;
 
     public static PastTrainingCyclesListFragment newInstance() {
@@ -55,8 +55,8 @@ public class PastTrainingCyclesListFragment extends Fragment {
     }
 
     private void initData() {
-        pastTrainingCyclesViewModel = ViewModelProviders.of(this).get(PastTrainingCyclesViewModel.class);
-        pastTrainingCyclesViewModel.getTrainingCyclesList().observe(this, new Observer<List<TrainingCycle>>() {
+        trainingCyclesViewModel = ViewModelProviders.of(this).get(TrainingCyclesViewModel.class);
+        trainingCyclesViewModel.getTrainingCyclesList().observe(this, new Observer<List<TrainingCycle>>() {
             @Override
             public void onChanged(@Nullable List<TrainingCycle> trainingCycles) {
                 pastTrainingCyclesListAdapter.setTrainingCycleList(trainingCycles);
@@ -66,7 +66,7 @@ public class PastTrainingCyclesListFragment extends Fragment {
 
     public void removeData() {
         if (pastTrainingCyclesListAdapter != null) {
-            pastTrainingCyclesViewModel.deleteAll();
+            trainingCyclesViewModel.deleteAll();
         }
     }
 

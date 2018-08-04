@@ -15,6 +15,9 @@ public interface TrainingCycleDao {
     @Query("SELECT * FROM training_cycle WHERE cid = :id LIMIT 1")
     TrainingCycle findTrainingCycleById(int id);
 
+    @Query("SELECT * FROM training_cycle ORDER BY cid DESC LIMIT 1")
+    TrainingCycle findCurrentTrainingCycle();
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     long insert(TrainingCycle trainingCycle);
 
