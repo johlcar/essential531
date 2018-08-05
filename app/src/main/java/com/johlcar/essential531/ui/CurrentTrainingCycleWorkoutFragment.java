@@ -88,7 +88,6 @@ public class CurrentTrainingCycleWorkoutFragment extends Fragment {
         TextView accessorySetFiveWeight = view.findViewById(R.id.accessory_set_five_weight);
         accessorySetFiveWeight.setText(String.valueOf(workout_max));
 
-        
         return view;
     }
 
