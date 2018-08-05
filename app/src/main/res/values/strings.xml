@@ -16,5 +16,8 @@
     <string name="set_one">Set 1</string>
     <string name="set_two">Set 2</string>
     <string name="set_three">Set 3</string>
+    <string name="set_four">Set 4</string>
+    <string name="set_five">Set 5</string>
     <string name="warm_up_reps">5</string>
+    <string name="save_workout">Workout Complete</string>
 </resources>

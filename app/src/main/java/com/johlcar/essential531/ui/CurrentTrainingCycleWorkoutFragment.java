@@ -15,6 +15,7 @@ public class CurrentTrainingCycleWorkoutFragment extends Fragment {
     private static final String TAG = "CurrentTrainingCycle";
     private String workout_name;
     private int workout_max;
+    private double[] weightPercentage;
 
     public static CurrentTrainingCycleWorkoutFragment newInstance(){
         return new CurrentTrainingCycleWorkoutFragment();
@@ -35,22 +36,22 @@ public class CurrentTrainingCycleWorkoutFragment extends Fragment {
                              @Nullable Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_current_training_cycle_workout, container, false);
 
-        TextView textView = view.findViewById(R.id.text_view_primary_title);
+        TextView textViewPrimaryTitle = view.findViewById(R.id.text_view_primary_title);
 
         Log.i(TAG, workout_name);
 
         switch(workout_name) {
             case "shoulder_press":
-                textView.setText("Shoulder Press Sets");
+                textViewPrimaryTitle.setText("Shoulder Press Sets");
                 break;
             case "deadlift":
-                textView.setText("Deadlift Sets");
+                textViewPrimaryTitle.setText("Deadlift Sets");
                 break;
             case "bench_press":
-                textView.setText("Bench Press Sets");
+                textViewPrimaryTitle.setText("Bench Press Sets");
                 break;
             case "squat":
-                textView.setText("Squat Sets");
+                textViewPrimaryTitle.setText("Squat Sets");
                 break;
         }
 
@@ -63,8 +64,35 @@ public class CurrentTrainingCycleWorkoutFragment extends Fragment {
         TextView warmUpSetThreeWeight = view.findViewById(R.id.warm_up_set_three_weight);
         warmUpSetThreeWeight.setText(String.valueOf(workout_max));
 
+        TextView primarySetOneWeight = view.findViewById(R.id.primary_set_one_weight);
+        primarySetOneWeight.setText(String.valueOf(workout_max));
+
+        TextView primarySetTwoWeight = view.findViewById(R.id.primary_set_two_weight);
+        primarySetTwoWeight.setText(String.valueOf(workout_max));
+
+        TextView primarySetThreeWeight = view.findViewById(R.id.primary_set_three_weight);
+        primarySetThreeWeight.setText(String.valueOf(workout_max));
+
+        TextView accessorySetOneWeight = view.findViewById(R.id.accessory_set_one_weight);
+        accessorySetOneWeight.setText(String.valueOf(workout_max));
+
+        TextView accessorySetTwoWeight = view.findViewById(R.id.accessory_set_two_weight);
+        accessorySetTwoWeight.setText(String.valueOf(workout_max));
+
+        TextView accessorySetThreeWeight = view.findViewById(R.id.accessory_set_three_weight);
+        accessorySetThreeWeight.setText(String.valueOf(workout_max));
+
+        TextView accessorySetFourWeight = view.findViewById(R.id.accessory_set_four_weight);
+        accessorySetFourWeight.setText(String.valueOf(workout_max));
+
+        TextView accessorySetFiveWeight = view.findViewById(R.id.accessory_set_five_weight);
+        accessorySetFiveWeight.setText(String.valueOf(workout_max));
 
         return view;
+    }
+
+    private void setWeightValues(TextView textView, double weightPercentage){
+
     }
 
 }
